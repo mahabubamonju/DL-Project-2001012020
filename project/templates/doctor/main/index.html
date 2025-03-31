@@ -1,0 +1,66 @@
+{% extends 'doctor/base.html' %}
+{% block title %}Home{% endblock title %}
+{% load static %}
+
+<!-- Content -->
+{% block content %}
+
+    <!-- Dashboard -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Dashboard
+                <small>Control panel</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <!-- <li class="active">Dashboard</li> -->
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+
+                <!-- All Patient -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-light-blue">
+                        <div class="inner">
+                            <h3></h3>
+
+                            <p>All Patient</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="{% url 'patient_list' %}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+                <!-- All User Subscribetion -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3></h3>
+
+                            <p>All User Subscribetion</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+            </div>
+            <!-- /.row -->
+        </section>
+    </div>
+
+{% endblock %}

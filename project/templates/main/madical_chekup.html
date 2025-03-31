@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="" content="">
+
+  <title>Health Care - Medical Checkup</title>
+
+  <link rel="stylesheet" href="{% static 'home/assets/css/maicons.css' %}">
+
+  <link rel="stylesheet" href="{% static 'home/assets/css/bootstrap.css' %}">
+
+  <link rel="stylesheet" href="{% static 'home/assets/vendor/owl-carousel/css/owl.carousel.css' %}">
+
+  <link rel="stylesheet" href="{% static 'home/assets/vendor/animate/animate.css' %}">
+
+  <link rel="stylesheet" href="{% static 'home/assets/css/theme.css' %}">
+</head>
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header>
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 text-sm">
+            <div class="site-info">
+              <a href="#"><span class="mai-call text-primary"></span> +008 19445 56666</a>
+              <span class="divider">|</span>
+              <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
+            </div>
+          </div>
+          <div class="col-sm-4 text-right text-sm">
+            <div class="social-mini-button">
+              <a href="#"><span class="mai-logo-facebook-f"></span></a>
+              {% comment %} <a href="#"><span class="mai-logo-twitter"></span></a> {% endcomment %}
+              {% comment %} <a href="#"><span class="mai-logo-dribbble"></span></a> {% endcomment %}
+              <a href="#"><span class="mai-logo-instagram"></span></a>
+            </div>
+          </div>
+        </div> <!-- .row -->
+      </div> <!-- .container -->
+    </div> <!-- .topbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}"><span class="text-primary">Health</span>-Care</a>
+
+        {% comment %} <form action="#">
+          <div class="input-group input-navbar">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Enter keyword.." aria-label="Username" aria-describedby="icon-addon1">
+          </div>
+        </form> {% endcomment %}
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupport">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              {% comment %} <a class="nav-link" href="#">About Us</a> {% endcomment %}
+            </li>
+            <li class="nav-item">
+              {% comment %} <a class="nav-link" href="#">Doctors</a> {% endcomment %}
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'madical_chekup' %}">Medicine Checkup Free</a>
+            </li>
+            <li class="nav-item">
+              {% comment %} <a class="nav-link" href="#">Contact</a> {% endcomment %}
+            </li>
+
+            {% if user.is_authenticated and user.first_name == '' %}
+
+            <li class="nav-item">
+            <a>Welcome , {{user.username}}</a>
+            <a class="btn btn-primary ml-lg-3" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+            {% elif user.is_authenticated %}
+
+            <li class="nav-item">
+            <a>Welcome , {{user.first_name}}&nbsp;{{user.last_name}}</a>
+            <a class="btn btn-primary ml-lg-3" href="{% url 'logout' %}">Logout</a>
+            </li>
+
+            {% else %}
+
+            <li class="nav-item">
+            <a class="btn btn-primary ml-lg-3" href="{% url 'login' %}">Login</a>
+            </li>
+
+            {% endif %}
+
+            {% comment %} <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" href="#">Login / Register</a>
+            </li> {% endcomment %}
+
+          </ul>
+        </div> <!-- .navbar-collapse -->
+      </div> <!-- .container -->
+    </nav>
+  </header>
+
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Chekup</h1>
+
+      {% comment %} <form class="main-form"> {% endcomment %}
+      <form method="post" action="/prescription">
+        {% comment %} <form method="post" action="/airesult"> {% endcomment %}
+        {% csrf_token %}
+        <div class="row mt-5 ">
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
+            <input name='name' type="text" class="form-control" placeholder="Full name">
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight">
+            <input name='age' type="text" class="form-control" placeholder="Age">
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select name="gender" id="departement" class="custom-select">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+            <input name='date' type="date" class="form-control">
+          </div>
+          {% comment %} <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select name="departement" id="departement" class="custom-select">
+              <option value="general">General Health</option>
+              <option value="cardiology">Cardiology</option>
+              <option value="dental">Dental</option>
+              <option value="neurology">Neurology</option>
+              <option value="orthopaedics">Orthopaedics</option>
+            </select>
+          </div> {% endcomment %}
+          {% comment %} <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <input type="text" class="form-control" placeholder="Number..">
+          </div> {% endcomment %}
+          <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
+            <input type="text" class="form-control", id="symptoms" name="symptoms" placeholder="type systems such as itching, sleeping, aching etc">
+            {% comment %} <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.."></textarea> {% endcomment %}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit</button>
+        {% comment %} <a href='{% url 'airesult' %}'><button class="btn btn-primary mt-3 wow zoomIn">Result</button></a> {% endcomment %}
+      </form>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row px-md-3">
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Company</h5>
+          <ul class="footer-menu">
+            <li><a href="{%  url 'home' %}">Home</a></li>
+            <li><a href="{% url 'madical_chekup' %}">Medicine Checkup Free</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>More</h5>
+          <ul class="footer-menu">
+            <li><a href="#">Terms & Condition</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+        {% comment %} <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Our partner</h5>
+          <ul class="footer-menu">
+            <li><a href="#">One-Fitness</a></li>
+            <li><a href="#">One-Drugs</a></li>
+            <li><a href="#">One-Live</a></li>
+          </ul>
+        </div> {% endcomment %}
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Contact</h5>
+          <p class="footer-link mt-2">Dhanmondi, Dhaka</p>
+          <a href="#" class="footer-link">+008 19445 56666</a>
+          <a href="#" class="footer-link">example@gmail.com</a>
+
+          <h5 class="mt-3">Social Media</h5>
+          <div class="footer-sosmed mt-3">
+            <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
+            {% comment %} <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a> {% endcomment %}
+            {% comment %} <a href="#" target="_blank"><span class="mai-logo-google-plus-g"></span></a> {% endcomment %}
+            <a href="#" target="_blank"><span class="mai-logo-instagram"></span></a>
+            <a href="#" target="_blank"><span class="mai-logo-linkedin"></span></a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p id="copyright">Copyright &copy; 2024 All right reserved</p>
+    </div>
+  </footer>
+
+<script src="{% static 'home/assets/js/jquery-3.5.1.min.js' %}"></script>
+
+<script src="{% static 'home/assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'home/assets/vendor/owl-carousel/js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'home/assets/vendor/wow/wow.min.js' %}"></script>
+
+<script src="{% static 'home/assets/js/theme.js' %}"></script>
+  
+</body>
+</html>

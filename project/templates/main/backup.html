@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Home </title>
+</head>
+    <body>
+
+        <div><a href="{% url 'login' %}"><button>Login</button></a></div>
+
+        {% comment %} <div><a href="{% url 'login' %}"><button>customer</button></a></div>
+        <div><a href="{% url 'login' %}"><button>editor</button></a></div>
+    	<div><a href="{% url 'login' %}"><button>analysis</button></a></div> {% endcomment %}
+    </body>
+</html>

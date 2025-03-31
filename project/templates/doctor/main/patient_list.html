@@ -1,0 +1,51 @@
+{% extends 'doctor/base.html' %}
+{% block title %}Patient List{% endblock title %}
+{% load static %}
+
+<!-- Content -->
+{% block content %}
+
+    <!-- All Patient -->
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1> All Patient </h1>
+            <ol class="breadcrumb">
+                <li><a href="{% url 'doctor' %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li class="active">All Patient </li>
+            </ol>
+        </section>
+
+        <div class="box box-primary"></div>
+        <section class="field">
+            <!-- <h2>All News</h2> -->
+            <table class="table table-fluid" id="myTable">
+                <thead>
+                    <tr>
+                        {% comment %} <th>S.N</th> {% endcomment %}
+                        <th>Patient Name</th>
+                        <th>Appointment Date</th>
+                        <th>Pescription</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in records %}
+                    <tr>
+                        {% comment %} <td>{{result.id}}</td> {% endcomment %}
+                        <td>{{result.name}}</td>
+                        <td>{{result.date}}</td>
+                        <td><a href="{% url 'patient_view' result.id %}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+{% endblock %}

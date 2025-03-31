@@ -1,0 +1,121 @@
+
+{% extends 'doctor/base.html' %}
+{% block title %}Patient List{% endblock title %}
+{% load static %}
+
+<!-- Content -->
+{% block content %}
+
+patient_view.html
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1> Patient Details </h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'doctor' %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{% url 'patient_list' %}"> Patient List</a></li>
+            <li class="active">Patient View </li>
+        </ol>
+    </section>
+
+    <section class="field">
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>age</th>
+                    <th>gender</th>
+                    <th>Appointment Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{result.name}}</td>
+                    <td>{{result.age}}</td>
+                    <td>{{result.gender}}</td>
+                    <td>{{result.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="field">
+        <h2>symptoms</h2>
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <td>{{result.symptoms}}</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+    <section class="field">
+        <h2>Predicted Disease</h2>
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <td>{{result.predicted_disease}}</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+    <section class="field">
+        <h2>Disease Description</h2>
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <td>{{result.dis_des}}</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+    <section class="field">
+        <h2>Precautions</h2>
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <td>{{result.precautions}}</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+    <section class="field">
+        <h2>medications</h2>
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <td>{{result.medications}}</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+    <section class="field">
+        <h2>rec_diet</h2>
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <td>{{result.rec_diet}}</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+    <section class="field">
+        <h2>Workout</h2>
+        <table class="table table-fluid" id="myTable">
+            <thead>
+                <tr>
+                    <td>{{result.workout}}</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+</div>
+
+{% endblock %}

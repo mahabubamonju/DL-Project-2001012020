@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <title>Health Care - Online Chat</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'chatbot/css/styles1.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400&family=Finger+Paint&display=swap">
+    <link rel="stylesheet" href="{% static 'home/assets/css/maicons.css' %}">
+    <link rel="stylesheet" href="{% static 'home/assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'home/assets/vendor/owl-carousel/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'home/assets/vendor/animate/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'home/assets/css/theme.css' %}">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      body {
+        background-image: url('file.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header style="background-color: white !important;">
+      <div class="topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 text-sm">
+              <div class="site-info">
+                <a href="#"><span class="mai-call text-primary"></span> +008 19445 56666</a>
+                <span class="divider">|</span>
+                <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
+              </div>
+            </div>
+            <div class="col-sm-4 text-right text-sm">
+              <div class="social-mini-button">
+                <a href="#"><span class="mai-logo-facebook-f"></span></a>
+                <a href="#"><span class="mai-logo-instagram"></span></a>
+              </div>
+            </div>
+          </div> <!-- .row -->
+        </div> <!-- .container -->
+      </div> <!-- .topbar -->
+  
+      <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}"><span class="text-primary">Health</span>-Care</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarSupport">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'chatbot' %}">Online chat Query</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'madical_chekup' %}">Medicine Checkup Free</a>
+              </li>
+              {% if user.is_authenticated and user.first_name == '' %}
+              <li class="nav-item">
+              <a>Welcome , {{user.username}}</a>
+              <a class="btn btn-primary ml-lg-3" href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% elif user.is_authenticated %}
+              <li class="nav-item">
+              <a>Welcome , {{user.first_name}}&nbsp;{{user.last_name}}</a>
+              <a class="btn btn-primary ml-lg-3" href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" href="{% url 'login' %}">Login</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div> <!-- .navbar-collapse -->
+        </div> <!-- .container -->
+      </nav>
+    </header>
+
+    <div class="card" role="main">
+      <div id="header">
+        <h1>Online Doctor!</h1>
+      </div>
+      <div id="message-section" role="log" aria-live="polite">
+        <div class="message" id="bot"><span id="bot-response">Hello.. Welcome to Query</span></div>
+      </div>
+      <div id="input-section">
+        <label for="input" class="visually-hidden">Type a message</label>
+        <input id="input" type="text" placeholder="Type a message" autocomplete="off" aria-label="Type a message" />
+        <button class="send" onclick="sendMessage()" aria-label="Send message">
+          <div class="circle"><i class="zmdi zmdi-mail-send"></i></div>
+        </button>
+      </div>
+    </div>
+    <script src="{% static 'chatbot/js/script1.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Customer </title>
+</head>
+    <body>
+
+        {% if user.is_authenticated and user.first_name == '' %}
+
+        <div><a href="#">Welcome , {{user.username}}</a></div>
+        <div><a href="{% url 'logout' %}"><button>Logout</button></a></div>
+
+        {% elif user.is_authenticated %}
+
+        <div><a href="#">Welcome , {{user.first_name}}&nbsp;{{user.last_name}}</a></div>
+        <div><a href="{% url 'logout' %}"><button>Logout</button></a></div>
+        
+        {% else %}
+
+        <div><a href="{% url 'login' %}"><button>Login</button></a></div>
+
+        {% endif %}
+
+        <h1>This is Customer</h1>
+        
+        {% comment %} <div><a href="{% url 'login' %}"><button>customer</button></a></div>
+        <div><a href="{% url 'login' %}"><button>editor</button></a></div>
+    	<div><a href="{% url 'login' %}"><button>analysis</button></a></div> {% endcomment %}
+    </body>
+</html>

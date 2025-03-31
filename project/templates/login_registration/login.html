@@ -1,0 +1,70 @@
+{% extends 'login_registration/loginbase.html' %}
+{% block title %}Login{% endblock title %}
+{% load static %}
+
+<!-- Content -->
+{% block content %}
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mt-md-4 pb-5">
+                            
+                            <h2 class="fw-bold mb-2 text-uppercase" style="color: yellow;">Login</h2>
+                            <!-- Logo Image -->
+                            {% comment %} <a href="{% url 'home' %}">
+                            <img class="img-fluid" src="{% static 'images/logo.png' %}" style="height: 90px;width: 350px;" alt="">
+                            </a> {% endcomment %}
+
+                            <!-- message Alert, Success, Warning-->
+                            {% include 'login_registration/msg.html' %}
+
+                            <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="abc@gmail.com" name="email" />
+                                    <label class="form-label" for="typeEmailX">Email</label>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="********" name="password" />
+                                    <label class="form-label" for="typePasswordX">Password</label>
+                                </div>
+
+                                {% comment %} <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="{% url 'password_reset' %}">Forgot password?</a>
+                                </p> {% endcomment %}
+
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+
+                            </form>
+
+                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                {% comment %} <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg mx-4 "></i></a> {% endcomment %}
+                                {% comment %} <a href="#!" class="text-white"><i class="fab fa-google fa-lg px-2"></i></a> {% endcomment %}
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <p class="mb-0">Don't have an account? <a href="{% url 'customer-registration' %}" class="text-white-50 fw-bold">Register</a>
+                            </p>
+                        </div>
+                        {% comment %} <a href='{% url 'registration' %}'><button class="btn btn-outline-light btn-lg px-5" type="submit">Multiple Register</button></a>
+                        <a href='{% url 'customer-registration' %}'><button class="btn btn-outline-light btn-lg px-5" type="submit">Customer</button></a>
+                        <a href='{% url 'editor-registration' %}'><button class="btn btn-outline-light btn-lg px-5" type="submit">Editor</button></a>
+                        <a href='{% url 'analysis-registration' %}'><button class="btn btn-outline-light btn-lg px-5" type="submit">Analysis</button></a> {% endcomment %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
